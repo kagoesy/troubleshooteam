@@ -23,8 +23,19 @@
 ```bash
 git clone https://github.com/kagoesy/troubleshooteam.git
 cd troubleshooteam
+```
+
+**macOS / Linux：**
+```bash
 bash install.sh
 ```
+
+**Windows (PowerShell)：**
+```powershell
+.\install.ps1
+```
+
+> Windows 下创建 symlink 需要**管理员权限**或启用**开发者模式**。如果两者都没有，脚本会自动降级为复制模式安装。
 
 安装脚本会将 Agent 定义和 `/investigate` 命令 symlink 到 `~/.claude/`，**安装后在任意目录都可以使用**。
 
@@ -64,11 +75,18 @@ az devops configure --defaults organization=https://dev.azure.com/YOUR_ORG
 ### 更新 & 卸载
 
 ```bash
-# 更新（symlink 自动生效）
+# 更新（symlink 模式下自动生效）
 cd troubleshooteam && git pull
+```
 
-# 卸载
+```bash
+# 卸载 (macOS / Linux)
 bash uninstall.sh
+```
+
+```powershell
+# 卸载 (Windows)
+.\uninstall.ps1
 ```
 
 ## 项目结构
