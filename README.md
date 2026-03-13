@@ -23,7 +23,12 @@
 ```bash
 git clone https://github.com/kagoesy/troubleshooteam.git
 cd troubleshooteam
+bash install.sh
 ```
+
+安装脚本会将 Agent 定义和 `/investigate` 命令 symlink 到 `~/.claude/`，**安装后在任意目录都可以使用**。
+
+> ⚠️ 安装后请保留克隆的 repo 目录（symlink 指向这里），更新时 `git pull` 即可自动生效。
 
 ### 2. 配置
 
@@ -31,10 +36,10 @@ cd troubleshooteam
 
 ```bash
 # ADX 集群和表结构
-config/adx-clusters.json
+~/.claude/troubleshooteam/config/adx-clusters.json
 
 # Azure DevOps 组织和项目
-config/devops-projects.json
+~/.claude/troubleshooteam/config/devops-projects.json
 ```
 
 ### 3. 前置条件
@@ -49,11 +54,21 @@ az devops configure --defaults organization=https://dev.azure.com/YOUR_ORG
 
 ### 4. 使用
 
-在项目目录下启动 Claude Code，然后运行：
+在**任意目录**启动 Claude Code，然后运行：
 
 ```
 /investigate 工单#12345: 用户反馈从 3/10 开始 API 返回 500 错误，
 影响 tenant: contoso.com，主要是 /api/v2/users 接口
+```
+
+### 更新 & 卸载
+
+```bash
+# 更新（symlink 自动生效）
+cd troubleshooteam && git pull
+
+# 卸载
+bash uninstall.sh
 ```
 
 ## 项目结构
