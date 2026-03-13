@@ -1,0 +1,88 @@
+{
+  "_comment": "Agent 工具扩展配置 — 用于后续接入 MCP 和 Skills",
+  "agents": {
+    "issue-analyst": {
+      "mcp": {
+        "_comment": "后续可接入的 MCP 工具",
+        "servicenow": {
+          "enabled": false,
+          "instance": "",
+          "description": "从 ServiceNow 拉取工单详情"
+        },
+        "jira": {
+          "enabled": false,
+          "project": "",
+          "description": "从 Jira 拉取工单详情"
+        }
+      },
+      "skills": {
+        "_comment": "后续可接入的 Skills",
+        "ticket-parser": {
+          "enabled": false,
+          "description": "多语言工单解析和翻译"
+        }
+      }
+    },
+    "investigation-planner": {
+      "mcp": {
+        "knowledge-base": {
+          "enabled": false,
+          "description": "已知问题库，提供历史排查路径匹配"
+        }
+      },
+      "skills": {
+        "runbook-library": {
+          "enabled": false,
+          "description": "按服务分类的排查 Playbook 模板"
+        }
+      }
+    },
+    "kusto-author": {
+      "mcp": {
+        "adx-schema": {
+          "enabled": false,
+          "description": "自动发现 ADX 集群表结构和 Schema"
+        }
+      },
+      "skills": {
+        "kql-templates": {
+          "enabled": false,
+          "description": "KQL 查询模板库，按场景分类"
+        }
+      }
+    },
+    "kusto-executor": {
+      "mcp": {
+        "adx-query": {
+          "enabled": false,
+          "description": "封装 ADX 查询执行、认证和 token 管理"
+        }
+      },
+      "skills": {}
+    },
+    "devops-searcher": {
+      "mcp": {
+        "azure-devops": {
+          "enabled": false,
+          "description": "Azure DevOps 搜索 API 封装"
+        }
+      },
+      "skills": {}
+    },
+    "doc-searcher": {
+      "mcp": {
+        "confluence": {
+          "enabled": false,
+          "instance": "",
+          "description": "Confluence 知识库搜索"
+        },
+        "sharepoint": {
+          "enabled": false,
+          "description": "SharePoint 文档库搜索"
+        }
+      },
+      "skills": {}
+    }
+  },
+  "_instructions": "扩展说明：1) 将需要启用的工具 enabled 改为 true 2) 填入对应的连接信息 3) Agent 启动时会读取此配置加载对应工具"
+}

@@ -1,0 +1,42 @@
+{
+  "_comment": "Azure DevOps 配置 — 请根据实际环境填写",
+  "organization": "https://dev.azure.com/YOUR_ORG",
+  "projects": [
+    {
+      "name": "YOUR_PROJECT",
+      "description": "主项目",
+      "wikis": [
+        {
+          "name": "YOUR_PROJECT.wiki",
+          "description": "项目 Wiki",
+          "key_sections": [
+            "Troubleshooting",
+            "Runbooks",
+            "Architecture",
+            "Known-Issues",
+            "Release-Notes"
+          ]
+        }
+      ],
+      "repositories": [
+        {
+          "name": "YOUR_REPO",
+          "description": "主服务代码仓库",
+          "default_branch": "main",
+          "key_paths": [
+            "src/",
+            "config/",
+            "docs/"
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "_comment": "认证方式二选一",
+    "method": "az_cli",
+    "pat_env_var": "AZURE_DEVOPS_PAT",
+    "_instructions": "方式1: 使用 az cli 登录 (method: az_cli)，需要先运行 az login。方式2: 使用 PAT (method: pat)，将 PAT 存入环境变量"
+  },
+  "_instructions": "填写说明：1) 将 YOUR_ORG 替换为组织名 2) 将 YOUR_PROJECT 替换为项目名 3) 按实际 Wiki 和 Repo 配置修改 4) 配置认证方式"
+}

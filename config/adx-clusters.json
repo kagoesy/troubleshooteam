@@ -1,0 +1,43 @@
+{
+  "_comment": "ADX 集群配置 — 请根据实际环境填写",
+  "clusters": [
+    {
+      "name": "production",
+      "url": "https://YOUR_CLUSTER.eastus.kusto.windows.net",
+      "databases": [
+        {
+          "name": "YOUR_DATABASE",
+          "description": "生产环境日志和指标数据库",
+          "common_tables": [
+            {
+              "name": "Requests",
+              "description": "API 请求日志",
+              "key_columns": ["Timestamp", "RequestId", "CorrelationId", "ServiceName", "OperationName", "StatusCode", "Duration", "TenantId", "UserId"]
+            },
+            {
+              "name": "Traces",
+              "description": "分布式追踪日志",
+              "key_columns": ["Timestamp", "TraceId", "SpanId", "ParentSpanId", "OperationName", "Duration", "StatusCode", "Message"]
+            },
+            {
+              "name": "Exceptions",
+              "description": "异常和错误日志",
+              "key_columns": ["Timestamp", "ExceptionType", "Message", "StackTrace", "ServiceName", "OperationName", "CorrelationId"]
+            },
+            {
+              "name": "Metrics",
+              "description": "性能指标数据",
+              "key_columns": ["Timestamp", "MetricName", "Value", "Dimensions", "ServiceName"]
+            },
+            {
+              "name": "Dependencies",
+              "description": "外部依赖调用日志",
+              "key_columns": ["Timestamp", "DependencyType", "Target", "Duration", "StatusCode", "Success", "ServiceName"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "_instructions": "填写说明：1) 将 YOUR_CLUSTER 替换为实际集群名 2) 将 YOUR_DATABASE 替换为数据库名 3) 按实际表结构修改 common_tables 4) 可添加多个 cluster 和 database"
+}
